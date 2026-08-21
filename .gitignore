@@ -1,0 +1,27 @@
+# Django
+*.pyc
+__pycache__/
+*.pyo
+.env
+.db.sqlite3
+media/
+static/
+venv/
+env/
+.venv/
+.eggs/
+*.egg-info/
+.DS_Store
+
+# Django specific
+*.pot
+*.po
+ migrations/
+admin/media/
+staticfiles/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
