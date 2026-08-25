@@ -12,6 +12,6 @@ class BienvenidoViewTests(TestCase):
         response = self.client.get("/")
         self.assertRedirects(response, reverse("session1:bienvenido"))
 
-    def test_admin_accesible(self):
+    def test_admin_no_registrado(self):
         response = self.client.get("/admin/login/?next=/admin/")
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 404)
