@@ -1,27 +1,27 @@
-# Django
-*.pyc
+# Python
 __pycache__/
+*.pyc
 *.pyo
-.env
-.db.sqlite3
-media/
-static/
+.eggs/
+*.egg-info/
+
+# Entornos virtuales
 venv/
 env/
 .venv/
-.eggs/
-*.egg-info/
-.DS_Store
 
-# Django specific
-*.pot
-*.po
- migrations/
-admin/media/
+# Django
+*.log
+db.sqlite3
+media/
 staticfiles/
 
-# IDE
+# Secrets
+.env
+
+# IDE / OS
 .vscode/
 .idea/
 *.swp
 *.swo
+.DS_Store

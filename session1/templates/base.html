@@ -3,92 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session 1 - Django Project</title>
+    <meta name="description" content="Laboratorio 01 - Proyecto Django">
+    <title>Laboratorio 01 · Django</title>
     <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent: #a855f7;
+            --bg: #0f172a;
+            --card: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.12);
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background:
+                radial-gradient(60rem 60rem at 120% -10%, rgba(168, 85, 247, 0.25), transparent 60%),
+                radial-gradient(50rem 50rem at -10% 110%, rgba(99, 102, 241, 0.3), transparent 60%),
+                var(--bg);
+            color: var(--text);
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 2rem 1rem;
         }
-        
+
         .container {
-            background: white;
-            padding: 2rem 3rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            background: var(--card);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(14px);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
             text-align: center;
-            max-width: 500px;
+            max-width: 560px;
+            width: 100%;
             animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        
+
         @keyframes popIn {
             from {
                 opacity: 0;
-                transform: scale(0.8) translateY(-20px);
+                transform: scale(0.92) translateY(-16px);
             }
             to {
                 opacity: 1;
                 transform: scale(1) translateY(0);
             }
         }
-        
-        h1 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-        }
-        
-        .subtitle {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 1.5rem;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        
+
         .icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 84px;
+            height: 84px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.45);
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #c7d2fe, var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .routes {
+            display: grid;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .route {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.9rem 1.1rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            transition: transform 0.2s, border-color 0.2s, background 0.2s;
+        }
+
+        .route:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.6);
+            background: rgba(99, 102, 241, 0.08);
+        }
+
+        .route code {
+            color: #c7d2fe;
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.25rem 0.7rem;
+            white-space: nowrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 32px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.45);
+        }
+
+        footer {
+            margin-top: 1.5rem;
+            color: var(--muted);
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <main class="container">
         <div class="icon">👋</div>
-        <h1>Bienvenido a Session 1</h1>
-        <p class="subtitle">Este es un proyecto Django con buen diseño y estructura</p>
-        <a href="/session1/bienvenido/" class="btn">Ir a la vista</a>
-    </div>
+        <h1>Bienvenido a Laboratorio 01</h1>
+        <p class="subtitle">Proyecto Django con vistas, plantillas y pruebas.<br>Estas son las rutas disponibles:</p>
+
+        <div class="routes">
+            <div class="route">
+                <code>/</code>
+                <span class="badge">Redirect → bienvenido</span>
+            </div>
+            <div class="route">
+                <code>/session1/bienvenido/</code>
+                <span class="badge">Vista actual</span>
+            </div>
+            <div class="route">
+                <code>/admin/</code>
+                <span class="badge">Panel de administración</span>
+            </div>
+        </div>
+
+        <a href="{% url 'session1:bienvenido' %}" class="btn">Ir a la vista</a>
+
+        <footer>Django · Session 1 · {{ request.resolver_match.app_name|default:"config" }}</footer>
+    </main>
 </body>
 </html>
